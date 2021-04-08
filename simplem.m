@@ -1,7 +1,7 @@
 %parameters
 
-I=1000;%y resolution
-J=1000;%x resolution
+I=3000;%y resolution
+J=3000;%x resolution
 %[I,J]=size(Z1);
 delta_x=1000;%spacing
 delta_y=1000;
@@ -86,16 +86,15 @@ for l=1:length(s)
         +k*dt*A(s(l))^m/dxs(s(l))*z(r(s(l)))); %implicit equation, goes upstream
 end
 
-
+toc
 z=z+U*dt;
 z(end,:)=0;%Boundary conditions
 z(:,1)=0;
 z(:,end)=0;
 z(1,:)=0;
 if mod(t/dt,5)==0
-figure(1);pcolor(z);shading interp;colormap jet;drawnow;
+%figure(1);pcolor(z);shading interp;colormap jet;drawnow;
 end
 t
 end
-toc;
 
